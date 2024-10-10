@@ -10,7 +10,8 @@
     "dev:ssr": "ng run angular16-universal:serve-ssr",
     "serve:ssr": "node dist/angular16-universal/server/main.js",
     "build:ssr": "ng build && ng run angular16-universal:server",
-    "prerender": "ng run angular16-universal:prerender"
+    "prerender": "ng run angular16-universal:prerender",
+    "vercel-build": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
