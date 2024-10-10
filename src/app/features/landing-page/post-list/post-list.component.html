@@ -1,0 +1,40 @@
+<section class="space-y-6 mb-6 self-start">
+  <h1 class="text-4xl font-bold">Publicaciones</h1>
+  <p class="text-lg">Publicaciones de los usuarios.</p>
+</section>
+
+<section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+  <ng-container *ngIf="posts$ | async as posts; else loading">
+    <ng-container *ngFor="let post of posts">
+      <article
+        class="bg-white p-6 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer hover:bg-gray-100 transition-all"
+      >
+        <div>
+          <h3 class="text-2xl font-bold mb-2">{{ post.title }}</h3>
+          <p class="text-gray-600 mb-4">
+            <strong>Identificador de usuario:</strong> {{ post.userId }}
+          </p>
+          <p class="text-gray-600 mb-4">
+            {{ post.body }}
+          </p>
+        </div>
+      </article>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #loading>
+    <ng-container *ngFor="let _ of loadingSkeletons">
+      <article
+        class="w-[304px] bg-white p-6 rounded-lg shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 cursor-pointer hover:bg-gray-100 transition-all"
+      >
+        <div class="col-span-1 md:col-span-3">
+          <div class="animate-pulse space-y-4">
+            <div class="h-6 bg-gray-300 rounded w-3/4"></div>
+            <div class="h-6 bg-gray-300 rounded w-1/2"></div>
+            <div class="h-6 bg-gray-300 rounded w-1/4"></div>
+          </div>
+        </div>
+      </article>
+    </ng-container>
+  </ng-template>
+</section>
